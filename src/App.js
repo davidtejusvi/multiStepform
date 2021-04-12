@@ -1,5 +1,6 @@
 import React from 'react';
-import MultiStepForm from './components/MultiStepForm';
+
+import { MultiStepForm } from "./components/MultiStepForm";
 
 import './App.css';
 
@@ -7,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <h1>hello from app</h1>
+      <h1>Multi Step Form </h1>
       <MultiStepForm />
     </div>
   );

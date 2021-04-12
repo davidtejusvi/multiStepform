@@ -7,52 +7,50 @@ import { Review } from './stepForms/Review';
 import { Submit } from './stepForms/Submit';
 
 const defaultData = {
-firstName : '',
-lastName :  '',
-nickName : ''
-};
-
-const steps = [
-    {id: 'names'},
-    {id: 'address'},
-    {id: 'contact'},
-    {id: 'review'},
-    {id: 'submit'}
-]
-const MultiStepForm = () => {
+    firstName: "",
+    lastName: "",
+    nickName: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    phone: "",
+    email: "",
+  };
+  
+  const steps = [
+    { id: "names" },
+    { id: "address" },
+    { id: "contact" },
+    { id: "review" },
+    { id: "submit" },
+  ];
+  
+  export const MultiStepForm = () => {
     const [formData, setForm] = useForm(defaultData);
-    const {step, navigation} = useStep({
-        steps,
-        initialStep: 0
+    const { step, navigation } = useStep({
+      steps,
+      initialStep: 0,
     });
-    
-    console.log(step);
-
-    switch(steps.id){
-        
-        case "names" : 
-            return <Names />;
-
-        case "address" : 
-            return <Address />;
-        case "contact" : 
-            return <Contact />;
-
-        case "review" : 
-            return <Review />;
-
-        case "submit" : 
-            return <Submit />;
-
+  
+    const props = { formData, setForm, navigation };
+  
+    switch (step.id) {
+      case "names":
+        return <Names {...props} />;
+      case "address":
+        return <Address {...props} />;
+      case "contact":
+        return <Contact {...props} />;
+      case "review":
+        return <Review {...props} />;
+      case "submit":
+        return <Submit {...props} />;
     }
-
-
+  
     return (
-        <div>
-            <step /> 
-        </div>
-    )
-}
-
-
-export default MultiStepForm;
+      <div>
+        <h1>Multi step form</h1>
+      </div>
+    );
+  };
